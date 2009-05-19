@@ -1,0 +1,15 @@
+<% if cart_item == @current_item %>
+    <tr id="current_item">
+  <% else %>
+    <tr>
+  <% end %>
+    <td><span id="item_quantity"><%= cart_item.quantity %>&nbsp;X</span></td>
+    <td><%= h(cart_item.title) %></td>
+    <td class="item-price" ><%= number_to_currency(cart_item.price) %></td>
+    <td>
+      <%= link_to_remote "1", :url => { :action => :remove_from_cart , :id => cart_item.product} %>
+    </td>
+    <td>
+      <%= link_to_remote " All", :url => { :action => :remove_all_from_cart , :id => cart_item.product} %>
+    </td>
+  </tr>
